@@ -1,0 +1,45 @@
+{
+  "name": "phpsa/filament-media",
+  "description": "todo",
+  "keywords": [
+    "laravel",
+    "user",
+    "cli",
+    "resource",
+    "ui",
+    "filament",
+    "widget",
+    "fun"
+  ],
+  "homepage": "https://cgs4k.nz",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Phpsa\\FilamentMedia\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Craig G Smith",
+      "email": "vxdhost@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^8.0",
+    "barryvdh/laravel-elfinder": "^0.5",
+    "filament/filament": "^2.9",
+    "spatie/laravel-package-tools": "^1.10"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Phpsa\\FilamentMedia\\FilamentMediaProvider"
+      ]
+    }
+  },
+  "prefer-stable": true
+}
