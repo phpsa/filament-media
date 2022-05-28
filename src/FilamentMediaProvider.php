@@ -11,12 +11,16 @@ class FilamentMediaProvider extends PluginServiceProvider
     public static string $name = 'filament-media';
 
 
+
     protected array $pages = [
         FilamentMedia::class
     ];
 
     public function configurePackage(Package $package): void
     {
-        $package->name('filament-media')->hasViews()->hasConfigFile();
+        $package->name('filament-media')
+        ->hasMigration('create_media_manager_table')
+        ->hasViews()
+        ->hasConfigFile();
     }
 }

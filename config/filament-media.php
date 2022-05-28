@@ -2,6 +2,9 @@
 
 return [
     'disks' => [
-        'public'
+        'public',
+        'local',
+        's3'
     ],
+    'per_page' => 16
 ];
