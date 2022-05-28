@@ -20,6 +20,7 @@
             <x-filament::card>
                 <div wire:loading.class="hide">
                     @foreach ($currentFiles as $current)
+                        {{ $current->getFirstMedia('images') }}
                         {{ $current->disk . '-' . $current->id }}
                     @endforeach
                     <div wire:loading>
@@ -31,8 +32,6 @@
             <x-filament::card>
                 <form wire:submit.prevent="save">
                     {{ $this->form }}
-
-                    <button type="submit">Save Photo</button>
                 </form>
             </x-filament::card>
 
