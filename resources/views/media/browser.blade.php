@@ -23,14 +23,12 @@
         <div wire:loading.remove>
             @foreach ($currentFiles as $current)
             {{ $current->getFirstMedia('images') }}
-            {{ $current->disk . '-' . $current->id }}
             @endforeach
             {{ $currentFiles->links() }}
         </div>
+    <hr />
+    <form wire:submit.prevent="save">
+        {{ $this->form }}
+    </form>
     </x-filament::card>
-    <x-filament::card>
-                <form wire:submit.prevent="save">
-                    {{ $this->form }}
-                </form>
-            </x-filament::card>
 </x-filament::page>
