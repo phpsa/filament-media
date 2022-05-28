@@ -52,13 +52,14 @@ class FilamentMedia extends Page
     public function updatedUploads()
     {
 
-        foreach ($this->uploads as $upload) {
+        foreach ($this->uploads as $idx => $upload) {
             // dd($upload, $upload->getFilename(), $this);
             MediaManager::create(['disk' => $this->disks[$this->selectedDisk]])
                  ->addMedia($upload)
                  ->toMediaCollection('images', $this->disks[$this->selectedDisk]);
+        //    unset($this->uploads[$idx]);
         }
-        $this->uploads = [];
+
         $this->notify('success', 'Saved');
     // here you can store immediately on any change of the property
     }

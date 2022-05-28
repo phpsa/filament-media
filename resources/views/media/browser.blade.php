@@ -20,7 +20,7 @@
             <x-filament::card>
                 <div wire:loading.class="hide">
                     @foreach ($currentFiles as $current)
-                        {{ $current->getFirstMedia('images') }}
+                        {{ $current->file_manager_preview_url }}
                         {{ $current->disk . '-' . $current->id }}
                     @endforeach
                     <div wire:loading>

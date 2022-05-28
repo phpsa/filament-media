@@ -21,6 +21,7 @@ class FilamentMediaProvider extends PluginServiceProvider
         $package->name('filament-media')
         ->hasMigration('create_media_manager_table')
         ->hasViews()
-        ->hasConfigFile();
+        ->hasConfigFile()
+        ->hasRoutes('web');
     }
 }
