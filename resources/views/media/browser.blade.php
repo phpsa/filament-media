@@ -31,7 +31,11 @@
         </div>
         <div wire:loading.remove>
             @foreach ($currentFiles as $current)
-                {{ $current->file_manager_preview_url }}
+                <img
+                    class=""
+                    src="{{ $current->file_manager_preview_url }}"
+                    alt="{{ $current->name }}"
+                />
             @endforeach
             {{ $currentFiles->links() }}
         </div>

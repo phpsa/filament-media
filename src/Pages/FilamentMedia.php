@@ -7,6 +7,7 @@ use Filament\Pages\Page;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Phpsa\FilamentMedia\Models\MediaManager;
 
 class FilamentMedia extends Page
@@ -67,6 +68,7 @@ class FilamentMedia extends Page
 
     protected function getViewData(): array
     {
+
         return [
          //   'currentFiles' => MediaManager::whereDisk($this->disks[$this->selectedDisk]),
             'currentFiles' => MediaManager::whereDisk($this->disks[$this->selectedDisk])->paginate(6),
@@ -81,8 +83,8 @@ class FilamentMedia extends Page
                 ->imagePreviewHeight('50')
                 ->preserveFilenames()
                 ->panelLayout('grid')
-                ->multiple()
-                ->reactive(),
+                ->multiple(true)
+             //   ->reactive(),
         ];
     }
 }
