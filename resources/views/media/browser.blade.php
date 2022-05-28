@@ -28,6 +28,13 @@
                     {{ $currentFiles->links() }}
                 </div>
             </x-filament::card>
+            <x-filament::card>
+                <form wire:submit.prevent="save">
+                    {{ $this->form }}
+
+                    <button type="submit">Save Photo</button>
+                </form>
+            </x-filament::card>
 
         </div>
 
