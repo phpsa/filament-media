@@ -13,35 +13,48 @@
                             {{ $disk }}
                         </a>
                     @endforeach
+
                 </div>
             </x-filament::card.heading>
         @endif
-        <div
-            wire:loading
-            class="w-full"
-        >
-            <div class="flex w-full items-center justify-center bg-gray-400 bg-opacity-50">
-                <img
-                    src="https://paladins-draft.com/img/circle_loading.gif"
-                    width="64"
-                    height="64"
-                    class="mt-1/4 m-auto"
-                >
+        @if (!$uploading)
+            <div
+                wire:loading.delay.longest
+                class="w-full"
+            >
+                <div class="flex w-full items-center justify-center bg-gray-400 bg-opacity-50">
+                    <img
+                        src="https://paladins-draft.com/img/circle_loading.gif"
+                        width="64"
+                        height="64"
+                        class="mt-1/4 m-auto"
+                    >
+                </div>
             </div>
+
+            <div>
+                @foreach ($currentFiles as $current)
+                    <img
+                        class=""
+                        src="{{ $current->file_manager_preview_url }}"
+                        alt="{{ $current->name }}"
+                    />
+                    <input
+                        type="checkbox"
+                        name="imgSelect[]"
+                        value="{{ $current->id }}"
+                        wire:model.lazy="imgSelect"
+                    />
+                @endforeach
+
+                {{ $currentFiles->links() }}
+            </div>
+        @else
+            <form wire:submit.prevent="save">
+                {{ $this->form }}
+            </form>
+        @endif
         </div>
-        <div wire:loading.remove>
-            @foreach ($currentFiles as $current)
-                <img
-                    class=""
-                    src="{{ $current->file_manager_preview_url }}"
-                    alt="{{ $current->name }}"
-                />
-            @endforeach
-            {{ $currentFiles->links() }}
-        </div>
-        <hr />
-        <form wire:submit.prevent="save">
-            {{ $this->form }}
-        </form>
+
     </x-filament::card>
 </x-filament::page>
